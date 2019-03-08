@@ -10,6 +10,9 @@ var config = {
 
 firebase.initializeApp(config);
 
+var database = firebase.database();
+
+
 
 
 $("#sub").on("click", function () {
@@ -31,23 +34,22 @@ $("#sub").on("click", function () {
 
         if (errorMessage !== "") {
             $("#worked").html("<h1>" + "SOMETHING IS WRONG " + errorMessage + "</h1>");
+            console.log("JOE");
         }
-
-       
+        else {
             $("#1worked").html("<h1>" + "User Created Successfully" + "</h1>");
             $("#1worked").append("<h1>" + "UserName: " + email + "</h1>");
             $("#1worked").append("<h1>" + "Password: " + password + "</h1>");
-        
+            console.log("K");
+        }
+
 
     });
 
-
-
-
-
+    console.log("vinnie");
 })
 
-
+// Login Stuff
 $("#subLogin").on("click", function () {
     event.preventDefault();
 
@@ -61,12 +63,13 @@ $("#subLogin").on("click", function () {
         // ...
 
     });
-
+    // checks login credentials 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
             //$("#working").html("<h1>" + "Yes it worked" + "</h1>")
-            document.location.href = "profile.html";
+            //document.location.href = "profile.html";
+            console.log(user.uid);
         } else {
             // No user is signed in.
             //$("#working").html("<h1>" + "it aint work" + "</h1>")
@@ -74,7 +77,26 @@ $("#subLogin").on("click", function () {
             incorrect();
         }
     });
-    console.log(password + " " + email);
+    //console.log(password + " " + email);
+})
+
+$("#o").on("click", function () {
+    event.preventDefault();
+
+    var user = firebase.auth().currentUser;
+    //var uid = user.uid;
+    var color = $("#colorInput").val().trim();
+    var food = $("#foodInput").val().trim();
+    var ref2 = firebase.database().ref().child("color").child("food");
+
+    // ref2.child(uid).set({
+    //     userColor: color,
+    //     userFood: food
+    // });
+
+    console.log(food + " " + color + " " +  " " + user);
+    console.log(food + " " + color)
+    console.log("vinnie");
 })
 
 function incorrect() {
@@ -88,3 +110,5 @@ firebase.auth().signOut().then(function () {
 }).catch(function (error) {
     // An error happened.
 });
+
+

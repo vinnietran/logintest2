@@ -1,5 +1,5 @@
 <meta charset="UTF-8">
-<title>Login</title>
+<title>Profile</title>
 
 <!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -25,5 +25,26 @@
         </div>
       </div>
 
+
+      <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Whats your fav color</label>
+            <input type="email" class="form-control" id="colorInput" aria-describedby="emailHelp"
+              placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Fav food</label>
+            <input type="password" class="form-control" id="foodInput" placeholder="Password">
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary" id="o">Submit</button>
+        </form>
+
+        <script src="logic.js"></script>
 </body>
+
 </html>
